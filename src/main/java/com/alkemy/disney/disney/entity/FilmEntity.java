@@ -1,4 +1,4 @@
-package entity;
+package com.alkemy.disney.disney.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -17,9 +17,8 @@ import javax.persistence.*;
 public class FilmEntity {
 
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid" , strategy = "uuid2")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     
     private String image;
 
@@ -35,8 +34,8 @@ public class FilmEntity {
     @JoinColumn(name = "kind_id", insertable = false, updatable = false)
     private KindEntity kind;
 
-    @Column(name = "kind_id")
-    private String kindId;
+    @Column(name = "kind_id", nullable = false)
+    private Long kindId;
 
     @ManyToMany(
             cascade = {
